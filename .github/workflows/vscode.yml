@@ -26,7 +26,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+
       - run: "echo '${{ steps.get_latest_release.outputs.data }}' >> ${{ env.owner }}.${{ env.repo }}.json"
+
 
       - name: Get Release tag_name
         uses: sergeysova/jq-action@v2
@@ -37,8 +39,8 @@ jobs:
 
       - name: Show my version
         run: |
-        ls -la
-        echo "${{ steps.release_tag_name.outputs.value }}"
+          ls -la
+          echo "${{ steps.release_tag_name.outputs.value }}"
         
 
       - name: Commit changes
