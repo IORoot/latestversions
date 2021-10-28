@@ -34,7 +34,7 @@ jobs:
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: 'jq .tag_name release.json -r > ${{ env.owner }}.${{ env.repo }}.json '
+          cmd: 'jq .tag_name release.json -r > ${{ env.owner }}.${{ env.repo }}.md '
 
 
 
