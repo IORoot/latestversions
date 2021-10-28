@@ -15,11 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+
       - uses: octokit/request-action@v2.x
         id: get_latest_release
         with:
           route: GET /repos/${{ env.owner }}/${{ env.repo }}/releases/latest
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -33,11 +36,11 @@ jobs:
 
 
       - name: Show my version
-        run: 'echo "${{ steps.release_tag_name.outputs.value }}"'
-
-      - name: Checkout repo
-        uses: actions/checkout@v2
+        run: |
+        ls -la
+        echo "${{ steps.release_tag_name.outputs.value }}"
         
+
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
