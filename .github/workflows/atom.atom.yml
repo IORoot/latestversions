@@ -1,0 +1,45 @@
+name: atom/atom
+on:
+  push:
+    branches:
+      - master
+
+env:
+  owner: atom
+  repo: atom
+
+jobs:
+
+  getLatestVersion:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+
+      - uses: octokit/request-action@v2.x
+        id: get_latest_release
+        with:
+          route: GET /repos/${{ env.owner }}/${{ env.repo }}/releases/latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+      - run: "echo '${{ steps.get_latest_release.outputs.data }}' > release.json"
+
+
+      - name: Get Release tag_name
+        uses: sergeysova/jq-action@v2
+        id: release_tag_name
+        with:
+          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' release.json -r > ${{ env.owner }}.${{ env.repo }}.json"
+
+
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          message: 'Update'
+          add: '${{ env.owner }}.${{ env.repo }}.json'
