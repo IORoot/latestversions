@@ -34,7 +34,7 @@ jobs:
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: 'jq .tag_name,.html_url,.published_at release.json -r > ${{ env.owner }}.${{ env.repo }}.md '
+          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' release.json -r > ${{ env.owner }}.${{ env.repo }}.json"
 
 
 
@@ -42,4 +42,4 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           message: 'Update'
-          add: '${{ env.owner }}.${{ env.repo }}.md'
+          add: '${{ env.owner }}.${{ env.repo }}.json'
