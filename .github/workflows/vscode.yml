@@ -35,6 +35,9 @@ jobs:
       - name: Show my version
         run: 'echo "${{ steps.release_tag_name.outputs.value }}"'
 
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
