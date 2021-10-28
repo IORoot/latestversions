@@ -22,8 +22,8 @@ jobs:
 
       - run: "echo latest release: ${{ steps.get_latest_release.outputs.data.tag_name }}"
 
-      - run: "echo latest data: ${{ steps.get_latest_release.outputs.data }}"
-
       - run: "echo latest headers: ${{ steps.get_latest_release.outputs.headers }}"
 
       - run: "echo latest status: ${{ steps.get_latest_release.outputs.status }}"
+
+        - run: "echo latest data: ${{ steps.get_latest_release.outputs.data }}"
