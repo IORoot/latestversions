@@ -39,7 +39,6 @@ jobs:
 
       - name: Show my version
         run: |
-          ls -la
           echo "${{ steps.release_tag_name.outputs.value }}"
         
 
