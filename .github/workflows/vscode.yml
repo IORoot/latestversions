@@ -27,23 +27,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-      - run: "echo '${{ steps.get_latest_release.outputs.data }}' >> ${{ env.owner }}.${{ env.repo }}.json"
+      - run: "echo '${{ steps.get_latest_release.outputs.data }}' >> release.json"
 
 
       - name: Get Release tag_name
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: 'jq .tag_name ${{ env.owner }}.${{ env.repo }}.json -r'
+          cmd: 'jq .tag_name release.json -r >> ${{ env.owner }}.${{ env.repo }}.json '
 
 
-      - name: Show my version
-        run: |
-          echo "${{ steps.release_tag_name.outputs.value }}"
-        
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
           message: 'Update'
-          add: '*.json'
+          add: '${{ env.owner }}.${{ env.repo }}.json'
