@@ -27,14 +27,14 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-      - run: "echo '${{ steps.get_latest_release.outputs.data }}' >> release.json"
+      - run: "echo '${{ steps.get_latest_release.outputs.data }}' > release.json"
 
 
       - name: Get Release tag_name
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: 'jq .tag_name release.json -r >> ${{ env.owner }}.${{ env.repo }}.json '
+          cmd: 'jq .tag_name release.json -r > ${{ env.owner }}.${{ env.repo }}.json '
 
 
 
