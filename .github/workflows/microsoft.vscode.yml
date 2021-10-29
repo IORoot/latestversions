@@ -6,14 +6,19 @@ on:
 
 env:
   category: ide
-  owner: microsoft
-  repo: vscode
 
 jobs:
 
   getLatestVersion:
 
+    strategy:
+      fail-fast: false
+      matrix:
+        repo: [microsoft/vscode, notepad-plus-plus/notepad-plus-plus]
+
     runs-on: ubuntu-latest
+
+
     steps:
 
       - name: Checkout repo
@@ -23,21 +28,21 @@ jobs:
       - uses: octokit/request-action@v2.x
         id: get_latest_release
         with:
-          route: GET /repos/${{ env.owner }}/${{ env.repo }}/releases/latest
+          route: GET /repos//${{ matrix.repo }}/releases/latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
       - run: | 
-          echo '${{ steps.get_latest_release.outputs.data }}' > release.json
-          mkdir ${{ env.category }}
+          mkdir ${{ env.category }}/${{ matrix.repo }}
+          echo '${{ steps.get_latest_release.outputs.data }}' > ./${{ env.category }}/${{ matrix.repo }}.release.json
 
 
       - name: Get Release tag_name
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' release.json -r > ./${{ env.category }}/${{ env.owner }}.${{ env.repo }}.json"
+          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./${{ env.category }}/${{ matrix.repo }}.release.json -r > ./${{ env.category }}/${{ matrix.repo }}.json"
 
 
 
@@ -45,4 +50,4 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           message: 'Update'
-          add: './${{ env.category }}/${{ env.owner }}.${{ env.repo }}.json'
+          add: './${{ env.category }}/${{ matrix.repo }}.json'
