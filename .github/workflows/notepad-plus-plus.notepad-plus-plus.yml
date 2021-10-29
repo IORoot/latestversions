@@ -5,6 +5,7 @@ on:
       - master
 
 env:
+  category: ide
   owner: notepad-plus-plus
   repo: notepad-plus-plus
 
@@ -42,4 +43,4 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           message: 'Update'
-          add: '${{ env.owner }}.${{ env.repo }}.json'
+          add: '${{ env.category }}/${{ env.owner }}.${{ env.repo }}.json'
