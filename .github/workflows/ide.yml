@@ -9,7 +9,7 @@ env:
 
 jobs:
 
-  getLatestVersion:
+  get:
 
     strategy:
       fail-fast: false
@@ -17,7 +17,7 @@ jobs:
         repo: [
           'microsoft/vscode', 
           'notepad-plus-plus/notepad-plus-plus',
-          'vim/vim'
+          'atom/atom'
           ]
 
     runs-on: ubuntu-latest
