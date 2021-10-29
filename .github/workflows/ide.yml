@@ -1,4 +1,4 @@
-name: Microsoft/VSCode
+name: IDEs
 on:
   push:
     branches:
@@ -17,7 +17,10 @@ jobs:
         repo: [
           'microsoft/vscode', 
           'notepad-plus-plus/notepad-plus-plus',
-          'atom/atom'
+          'atom/atom',
+          'textmate/textmate',
+          'geany/geany',
+          'brackets-cont/brackets',
           ]
 
     runs-on: ubuntu-latest
