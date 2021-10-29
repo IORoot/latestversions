@@ -19,8 +19,6 @@ jobs:
           'notepad-plus-plus/notepad-plus-plus',
           'atom/atom',
           'textmate/textmate',
-          'geany/geany',
-          'brackets-cont/brackets',
           ]
 
     runs-on: ubuntu-latest
