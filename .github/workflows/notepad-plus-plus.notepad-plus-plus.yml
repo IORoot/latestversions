@@ -28,7 +28,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-      - run: "echo '${{ steps.get_latest_release.outputs.data }}' > release.json"
+      - run: | 
+        "echo '${{ steps.get_latest_release.outputs.data }}' > release.json"
+        mkdir ${{ env.category }}
 
 
       - name: Get Release tag_name
@@ -43,4 +45,4 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           message: 'Update'
-          add: '${{ env.category }}/${{ env.owner }}.${{ env.repo }}.json'
+          add: './${{ env.category }}/${{ env.owner }}.${{ env.repo }}.json'
