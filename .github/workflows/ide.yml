@@ -40,6 +40,7 @@ jobs:
       - run: | 
           mkdir -p ${{ env.category }}/${{ matrix.repo }}
           echo '${{ steps.get_latest_release.outputs.data }}' > ./${{ env.category }}/${{ matrix.repo }}.release.json
+          echo ./${{ env.category }}/${{ matrix.repo }}.release.json
 
 
       - name: Get Release tag_name
