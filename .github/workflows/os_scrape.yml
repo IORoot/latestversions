@@ -1,4 +1,4 @@
-name: IDEs
+name: OS
 on:
   workflow_dispatch:
   # push:
@@ -31,7 +31,7 @@ jobs:
       - name: Test
         run: echo ${{ env.FILE }}
 
-        
+
       - name: Commit changes
         uses: EndBug/add-and-commit@v7
         with:
