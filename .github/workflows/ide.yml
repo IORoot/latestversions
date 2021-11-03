@@ -39,16 +39,16 @@ jobs:
 
 
       - run: | 
-          mkdir -p ${{ env.category }}/${{ matrix.repo }}
-          echo '${{ steps.get_latest_release.outputs.data }}' | tr '\r\n' ' ' > ./${{ env.category }}/${{ matrix.repo }}.release.json
-          cat ./${{ env.category }}/${{ matrix.repo }}.release.json
+          mkdir -p results/${{ env.category }}/${{ matrix.repo }}
+          echo '${{ steps.get_latest_release.outputs.data }}' | tr '\r\n' ' ' > ./results/${{ env.category }}/${{ matrix.repo }}.release.json
+          cat ./results/${{ env.category }}/${{ matrix.repo }}.release.json
 
 
       - name: Get Release tag_name
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./${{ env.category }}/${{ matrix.repo }}.release.json -r > ./${{ env.category }}/${{ matrix.repo }}.json"
+          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./results/${{ env.category }}/${{ matrix.repo }}.release.json -r > ./results/${{ env.category }}/${{ matrix.repo }}.json"
 
 
 
@@ -56,4 +56,4 @@ jobs:
         uses: EndBug/add-and-commit@v7
         with:
           message: 'Update'
-          add: './${{ env.category }}/${{ matrix.repo }}.json'
+          add: './results/${{ env.category }}/${{ matrix.repo }}.json'

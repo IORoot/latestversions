@@ -8,6 +8,8 @@ Includes:
 - Link to the latest release
 - Updated date.
 
-Each piece of software is placed into a category. Current Categories:
 
-- IDE
+# Methods of extraction
+
+1. Github Action of release number of github repository
+1. Web scrape usingnode.js library x-ray
