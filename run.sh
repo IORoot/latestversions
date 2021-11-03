@@ -1,3 +1,3 @@
 #!/bin/bash
 
-node --no-warnings ./x-ray/apple_macos.js
+node --no-warnings ./osmosis/microsoft_windows.js
