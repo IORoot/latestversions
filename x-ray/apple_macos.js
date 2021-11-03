@@ -25,8 +25,7 @@ xray(url, selector)(function(err, returned) {
     if (err) {
         throw err;
     }
-    console.log("JSON data is saved at: "+ folders+'/'+filename);
+    console.log(folders+'/'+filename);
 });
 
-  console.log(data);
 });
