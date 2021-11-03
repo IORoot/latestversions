@@ -6,7 +6,7 @@ on:
   #     - master
 
 env:
-  filename: 'apple_macos.js'
+  filename: 'microsoft_windows.js'
 
 
 jobs:
@@ -14,7 +14,6 @@ jobs:
   getRelease:
 
 
-      
     runs-on: ubuntu-latest
 
 
