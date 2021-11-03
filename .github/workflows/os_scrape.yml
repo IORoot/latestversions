@@ -5,7 +5,12 @@ on:
   #   branches:
   #     - master
 
+
+
 jobs:
+
+  env
+    filename: 'apple_macos.js'
 
   getRelease:
 
@@ -26,10 +31,7 @@ jobs:
 
       - run: | 
           npm install
-          echo "FILE=$(./run.sh)" >> $GITHUB_ENV
-
-      - name: Test
-        run: echo ${{ env.FILE }}
+          echo "FILE=$(node --no-warnings ./x-ray/${{ env.filename }})" >> $GITHUB_ENV
 
 
       - name: Commit changes
