@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "osmosis": "^1.1.10",
     "x-ray": "^2.3.4"
   }
 }
