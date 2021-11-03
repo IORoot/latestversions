@@ -12,4 +12,4 @@ Includes:
 # Methods of extraction
 
 1. Github Action of release number of github repository
-1. Web scrape usingnode.js library x-ray
+1. Web scrape using node.js library x-ray
