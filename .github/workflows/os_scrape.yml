@@ -5,16 +5,16 @@ on:
   #   branches:
   #     - master
 
+env:
+  filename: 'apple_macos.js'
 
 
 jobs:
 
-  env
-    filename: 'apple_macos.js'
-
   getRelease:
 
 
+      
     runs-on: ubuntu-latest
 
 
