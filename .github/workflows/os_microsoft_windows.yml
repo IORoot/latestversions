@@ -28,17 +28,8 @@ jobs:
 
 
       - shell: bash
+        name: Run Scrape
         run: |
           AIRTABLE_API_KEY="${{ secrets.AIRTABLE_API_KEY }}"
           npm install
-          NODE_DEBUG=cluster,net,http,fs,tls,module,timers
           node --no-warnings ./x-ray/${{ env.filename }}
-          
-        # echo "FILE=$()" >> $GITHUB_ENV
-
-
-      # - name: Commit changes
-      #   uses: EndBug/add-and-commit@v7
-      #   with:
-      #     message: 'Update'
-      #     add: '${{ env.FILE }}'

@@ -10,27 +10,14 @@ var folders  = './results/os/microsoft'
 var filename = 'windows.json'
 
 
-var api_key = process.env.AIRTABLE_API_KEY;
-// var base = new Airtable({apiKey: api_key}).base('app8NMPBTR6QCoYX2');
-
 var Airtable = require('airtable');
 Airtable.configure({
     endpointUrl: 'https://api.airtable.com',
-    apiKey: 'keyOtFXVVALGtAgsJ'
+    apiKey: process.env.AIRTABLE_API_KEY
 });
 var base = Airtable.base('app8NMPBTR6QCoYX2');
 
-base('versions').create({
-  "title": "test2",
-  "version": "testing2",
-  "link": "https://test2.com"
-}, function(err, record) {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.log(record.getId());
-});
+
 
 
 xray(url, selector)(function(err, returned) {
@@ -42,21 +29,30 @@ xray(url, selector)(function(err, returned) {
     "html_url": download,
   };
 
-  var data = JSON.stringify(json);
-
-  
-
-  if (!fs.existsSync(folders)){
-    fs.mkdirSync(folders, { recursive: true });
-  }
-
-  fs.writeFile(folders+'/'+filename, data, (err) => {
+  base('versions').create({
+    "title": "Microsoft Windows",
+    "version": version,
+    "link": download
+  }, function(err, record) {
     if (err) {
-        throw err;
+      console.error(err);
+      return;
     }
-    console.log(folders+'/'+filename);
-    
   });
+
+  // var data = JSON.stringify(json);
+
+  // if (!fs.existsSync(folders)){
+  //   fs.mkdirSync(folders, { recursive: true });
+  // }
+
+  // fs.writeFile(folders+'/'+filename, data, (err) => {
+  //   if (err) {
+  //       throw err;
+  //   }
+  //   console.log(folders+'/'+filename);
+    
+  // });
 
 });
 
