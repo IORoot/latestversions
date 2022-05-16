@@ -33,11 +33,12 @@ jobs:
 
       - run: | 
           npm install
-          echo "FILE=$(node --no-warnings ./x-ray/${{ env.filename }})" >> $GITHUB_ENV
+
+        # echo "FILE=$(node --no-warnings ./x-ray/${{ env.filename }})" >> $GITHUB_ENV
 
 
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v7
-        with:
-          message: 'Update'
-          add: '${{ env.FILE }}'
+      # - name: Commit changes
+      #   uses: EndBug/add-and-commit@v7
+      #   with:
+      #     message: 'Update'
+      #     add: '${{ env.FILE }}'
