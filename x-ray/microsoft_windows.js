@@ -21,42 +21,23 @@ Airtable.configure({
 });
 var base = Airtable.base('app8NMPBTR6QCoYX2');
 
-base('versions').create({
-  "title": "test2",
-  "version": "testing2",
-  "link": "https://test2.com"
-}, function(err, record) {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.log(record.getId());
-});
+
 
 
 xray(url, selector)(function(err, returned) {
 
   var version = returned.replace(regex,'');
 
-  var json = {
-    "latest_version": version,
-    "html_url": download,
-  };
-
-  var data = JSON.stringify(json);
-
-  
-
-  if (!fs.existsSync(folders)){
-    fs.mkdirSync(folders, { recursive: true });
-  }
-
-  fs.writeFile(folders+'/'+filename, data, (err) => {
+  base('versions').create({
+    "title": "Microsoft Windows",
+    "version": version,
+    "link": download
+  }, function(err, record) {
     if (err) {
-        throw err;
+      console.error(err);
+      return;
     }
-    console.log(folders+'/'+filename);
-    
+    console.log(record.getId());
   });
 
 });
