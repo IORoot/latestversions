@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  filename: 'microsoft_windows.js'
+  config: 'microsoft_windows.js'
 
 jobs:
 
@@ -33,4 +33,4 @@ jobs:
           echo 'AIRTABLE_API_KEY="${{ secrets.AIRTABLE_API_KEY }}"' >> .env
           cat .env
           npm install
-          node --no-warnings ./x-ray/${{ env.filename }}
+          node --no-warnings ./x-ray/${{ env.config }}
