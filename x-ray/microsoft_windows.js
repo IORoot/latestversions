@@ -43,7 +43,7 @@ xray(url, selector)(function(err, returned) {
 
 var client = new faunadb.Client({
   secret: process.env.FAUNADB,
-  domain: 'db.fauna.com',
+  domain: 'graphql.fauna.com/graphql',
   // NOTE: Use the correct domain for your database's Region Group.
   port: 443,
   scheme: 'https',
