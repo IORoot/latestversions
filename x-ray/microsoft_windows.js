@@ -13,9 +13,9 @@ var filename = 'windows.json'
 var api_key = process.env.AIRTABLE_API_KEY;
 console.log(api_key);
 
-var Airtable = require('airtable');
-var base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base('app8NMPBTR6QCoYX2');
-
+// var Airtable = require('airtable');
+// var base = new Airtable({apiKey: 'keyOtFXVVALGtAgsJ'}).base('app8NMPBTR6QCoYX2');
+const base = require('airtable').base('app8NMPBTR6QCoYX2');
 
 xray(url, selector)(function(err, returned) {
 
