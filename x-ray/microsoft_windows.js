@@ -10,6 +10,31 @@ var folders  = './results/os/microsoft'
 var filename = 'windows.json'
 
 
+console.log(process.env.AIRTABLE_API_KEY);
+var api_key = process.env.AIRTABLE_API_KEY;
+console.log(api_key);
+// var base = new Airtable({apiKey: api_key}).base('app8NMPBTR6QCoYX2');
+
+var Airtable = require('airtable');
+Airtable.configure({
+    endpointUrl: 'https://api.airtable.com',
+    apiKey: 'keyOtFXVVALGtAgsJ'
+});
+var base = Airtable.base('app8NMPBTR6QCoYX2');
+
+base('versions').create({
+  "title": "test2",
+  "version": "testing2",
+  "link": "https://test2.com"
+}, function(err, record) {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log(record.getId());
+});
+
+
 xray(url, selector)(function(err, returned) {
 
   var version = returned.replace(regex,'');
@@ -37,39 +62,3 @@ xray(url, selector)(function(err, returned) {
 
 });
 
-console.log(process.env.AIRTABLE_API_KEY);
-var api_key = process.env.AIRTABLE_API_KEY;
-console.log(api_key);
-// var base = new Airtable({apiKey: api_key}).base('app8NMPBTR6QCoYX2');
-
-var Airtable = require('airtable');
-Airtable.configure({
-    endpointUrl: 'https://api.airtable.com',
-    apiKey: 'keyOtFXVVALGtAgsJ'
-});
-var base = Airtable.base('app8NMPBTR6QCoYX2');
-
-base('versions').create([
-  {
-    "fields": {
-      "title": "test1",
-      "version": "testing1",
-      "link": "https://test.com"
-    }
-  },
-  {
-    "fields": {
-      "title": "test2",
-      "version": "testing2",
-      "link": "https://test.com"
-    }
-  }
-], function(err, records) {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  records.forEach(function (record) {
-    console.log(record.getId());
-  });
-});
