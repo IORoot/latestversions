@@ -11,12 +11,13 @@ var filename = 'windows.json'
 
 
 var api_key = process.env.AIRTABLE_API_KEY;
+console.log(api_key);
 // var base = new Airtable({apiKey: api_key}).base('app8NMPBTR6QCoYX2');
 
 var Airtable = require('airtable');
 Airtable.configure({
     endpointUrl: 'https://api.airtable.com',
-    apiKey: api_key
+    apiKey: 'keyOtFXVVALGtAgsJ'
 });
 var base = Airtable.base('app8NMPBTR6QCoYX2');
 
