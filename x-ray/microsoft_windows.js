@@ -1,7 +1,8 @@
 const fs     = require('fs');
 const Xray   = require('x-ray')
 const xray   = Xray()
-const { Client } = require('pg');
+var faunadb  = require('faunadb')
+var query    = faunadb.query
 
 var url      = 'https://en.wikipedia.org/wiki/Microsoft_Windows';
 var selector = '#mw-content-text > div.mw-parser-output > table.infobox.vevent > tbody > tr:nth-child(5) > td'
@@ -39,19 +40,25 @@ xray(url, selector)(function(err, returned) {
 });
 
 
-const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
 
-client.connect();
+var client = new faunadb.Client({
+  secret: process.env.FAUNADB,
+  domain: 'db.fauna.com',
+  // NOTE: Use the correct domain for your database's Region Group.
+  port: 443,
+  scheme: 'https',
+})
 
-client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-  if (err) throw err;
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row));
-  }
-  client.end();
-});
+var createP = client.query(
+  q.Create(
+    q.Collection('versions'),
+    { data: {
+      "latest_version": "2011.08.19",
+      "html_url": "https://test.com/"
+    } }
+  )
+)
+
+createP.then(function(response) {
+  console.log(response.ref); // Logs the ref to the console.
+})

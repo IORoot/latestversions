@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "x-ray": "^2.3.4",
-    "pg": "^8.7.3"
+    "faunadb": "^4.5.4"
   }
 }
