@@ -32,7 +32,9 @@ jobs:
           AIRTABLE_API_KEY="${{ secrets.AIRTABLE_API_KEY }}"
           npm install
           NODE_DEBUG=cluster,net,http,fs,tls,module,timers
-          echo "FILE=$(node ./x-ray/${{ env.filename }})" >> $GITHUB_ENV
+          node --no-warnings ./x-ray/${{ env.filename }}
+          
+        # echo "FILE=$()" >> $GITHUB_ENV
 
 
       # - name: Commit changes
