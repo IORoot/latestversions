@@ -19,21 +19,22 @@ targets.forEach(target => {
 
   xray(target.url, target.selector)(function(err, returned) {
 
-      var version = returned.replace(target.regex,'');
-      const date = new Date()
+    var regex = new RegExp(target.regex);
+    var version = returned.replace(regex,'');
+    const date = new Date()
 
-      base('versions').create({
-        "id"     : target.id,
-        "title"  : target.title,
-        "version": version,
-        "link"   : target.download,
-        "date"   : date.toGMTString()
-      }, function(err, record) {
-        if (err) {
-          console.error(err);
-          return;
-        }
-      });
+    base('versions').create({
+      "id"     : target.id,
+      "title"  : target.title,
+      "version": version,
+      "link"   : target.download,
+      "date"   : date.toGMTString()
+    }, function(err, record) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    });
 
   })
 
