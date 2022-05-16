@@ -7,7 +7,7 @@ on:
 
 env:
   filename: 'microsoft_windows.js'
-  AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+  api_key: ${{ secrets.AIRTABLE_API_KEY }}
 
 jobs:
 
@@ -30,7 +30,8 @@ jobs:
 
       - shell: bash
         run: |
-          echo "AIRTABLE_API_KEY=$(echo $AIRTABLE_API_KEY)" >> $GITHUB_ENV
+          echo "AIRTABLE_API_KEY=$(echo $api_key)" >> $GITHUB_ENV
+          AIRTABLE_API_KEY=${{ secrets.AIRTABLE_API_KEY }}
           npm install
           echo "FILE=$(node --no-warnings ./x-ray/${{ env.filename }})" >> $GITHUB_ENV
 

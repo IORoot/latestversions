@@ -10,9 +10,7 @@ var folders  = './results/os/microsoft'
 var filename = 'windows.json'
 
 
-console.log(process.env.AIRTABLE_API_KEY);
 var api_key = process.env.AIRTABLE_API_KEY;
-console.log(api_key);
 // var base = new Airtable({apiKey: api_key}).base('app8NMPBTR6QCoYX2');
 
 var Airtable = require('airtable');
