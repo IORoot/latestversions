@@ -10,12 +10,6 @@ var folders  = './results/os/microsoft'
 var filename = 'windows.json'
 
 
-var Airtable = require('airtable');
-Airtable.configure({
-    endpointUrl: 'https://api.airtable.com',
-    apiKey: process.env.AIRTABLE_API_KEY
-});
-var base = Airtable.base('app8NMPBTR6QCoYX2');
 
 
 
@@ -24,10 +18,13 @@ xray(url, selector)(function(err, returned) {
 
   var version = returned.replace(regex,'');
 
-  var json = {
-    "latest_version": version,
-    "html_url": download,
-  };
+  var Airtable = require('airtable');
+  Airtable.configure({
+      endpointUrl: 'https://api.airtable.com',
+      apiKey: process.env.AIRTABLE_API_KEY
+  });
+
+  var base = Airtable.base('app8NMPBTR6QCoYX2');
 
   base('versions').create({
     "title": "Microsoft Windows",
