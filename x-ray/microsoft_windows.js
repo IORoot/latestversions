@@ -12,14 +12,16 @@ var filename = 'windows.json'
 
 xray(url, selector)(function(err, returned) {
 
+  var version = data.replace(returned,'');
+
   var json = {
-    "latest_version": returned,
+    "latest_version": version,
     "html_url": download,
   };
 
   var data = JSON.stringify(json);
 
-  var data = data.replace(regex,'');
+  
 
   if (!fs.existsSync(folders)){
     fs.mkdirSync(folders, { recursive: true });
