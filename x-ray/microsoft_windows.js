@@ -39,7 +39,7 @@ xray(url, selector)(function(err, returned) {
 });
 
 
-var base     = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base('app8NMPBTR6QCoYX2');
+var base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base('app8NMPBTR6QCoYX2');
 base('versions').select({
   view: 'Grid view'
 }).firstPage(function(err, records) {
