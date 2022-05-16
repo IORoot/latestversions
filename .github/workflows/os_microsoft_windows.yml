@@ -28,7 +28,7 @@ jobs:
           node-version: '16'
 
       - run: | 
-          echo "AIRTABLE_API_KEY=$(echo $AIRTABLE_API_KEY | cut -c 1-6)" >> $GITHUB_ENV
+          export AIRTABLE_API_KEY=$AIRTABLE_API_KEY
           echo $AIRTABLE_API_KEY
 
       - run: | 
