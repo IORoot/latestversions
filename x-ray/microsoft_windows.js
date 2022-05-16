@@ -1,7 +1,6 @@
 const fs     = require('fs');
 const Xray   = require('x-ray')
 const xray   = Xray()
-var Airtable = require('airtable');
 
 var url      = 'https://en.wikipedia.org/wiki/Microsoft_Windows';
 var selector = '#mw-content-text > div.mw-parser-output > table.infobox.vevent > tbody > tr:nth-child(5) > td'
@@ -38,13 +37,30 @@ xray(url, selector)(function(err, returned) {
 
 });
 
+console.log(process.env.AIRTABLE_API_KEY);
+var api_key = process.env.AIRTABLE_API_KEY;
+// var base = new Airtable({apiKey: api_key}).base('app8NMPBTR6QCoYX2');
 
-var base = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base('app8NMPBTR6QCoYX2');
+var Airtable = require('airtable');
+Airtable.configure({
+    endpointUrl: 'https://api.airtable.com',
+    apiKey: api_key
+});
+var base = Airtable.base('app8NMPBTR6QCoYX2');
+
+
 base('versions').select({
-  view: 'Grid view'
-}).firstPage(function(err, records) {
-  if (err) { console.error(err); return; }
+  maxRecords: 3,
+  view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+  // This function (`page`) will get called for each page of records.
+
   records.forEach(function(record) {
       console.log('Retrieved', record.get('title'));
   });
+
+  fetchNextPage();
+
+}, function done(err) {
+  if (err) { console.error(err); return; }
 });
