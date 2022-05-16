@@ -4,7 +4,7 @@ const xray = Xray()
 
 var url      = 'https://en.wikipedia.org/wiki/Microsoft_Windows';
 var selector = '#mw-content-text > div.mw-parser-output > table.infobox.vevent > tbody > tr:nth-child(5) > td'
-const regex  = /\s.*/; // Match a whitespace and remove everything else.
+var regex    = /\s.*/; // Match a whitespace and remove everything else.
 var download = 'https://www.microsoft.com/en-gb/software-download';
 var folders  = './results/os/microsoft'
 var filename = 'windows.json'
@@ -12,7 +12,7 @@ var filename = 'windows.json'
 
 xray(url, selector)(function(err, returned) {
 
-  var version = data.replace(returned,'');
+  var version = returned.replace(regex,'');
 
   var json = {
     "latest_version": version,
