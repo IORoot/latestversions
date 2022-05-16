@@ -1,7 +1,7 @@
 const fs     = require('fs');
 const Xray   = require('x-ray')
 const xray   = Xray()
-const Client = require('pg');
+const { Client } = require('pg');
 
 var url      = 'https://en.wikipedia.org/wiki/Microsoft_Windows';
 var selector = '#mw-content-text > div.mw-parser-output > table.infobox.vevent > tbody > tr:nth-child(5) > td'
