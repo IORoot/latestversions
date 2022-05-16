@@ -31,7 +31,7 @@ jobs:
       - shell: bash
         run: |
           echo "AIRTABLE_API_KEY=$(echo $api_key)" >> $GITHUB_ENV
-          AIRTABLE_API_KEY=${{ secrets.AIRTABLE_API_KEY }}
+          AIRTABLE_API_KEY="${{ secrets.AIRTABLE_API_KEY }}"
           npm install
           echo "FILE=$(node --no-warnings ./x-ray/${{ env.filename }})" >> $GITHUB_ENV
 
