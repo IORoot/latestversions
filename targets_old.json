@@ -1,0 +1,44 @@
+[
+    {
+        "owner": "apple",
+        "product": "macos",
+        "address": "https://support.apple.com/en-us/HT201260",
+        "selector": "#tableWraper > table > tbody > tr:nth-child(2) > td:nth-child(2)",
+        "download": "https://www.apple.com/uk/macos"
+    },
+    {
+        "owner": "microsoft",
+        "product": "windows",
+        "address": "https://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions",
+        "selector": "#mw-content-text > div.mw-parser-output > table:nth-child(7) > tbody > tr:last-child > td:nth-child(1)",
+        "download": "https://www.microsoft.com/en-gb/software-download"
+    },
+    {
+        "owner": "linux",
+        "product": "ubuntu",
+        "address": "https://distrowatch.com/table.php?distribution=ubuntu",
+        "selector": "body > table:nth-child(8) > tr:nth-child(1) > td:nth-child(3)",
+        "download": "https://ubuntu.com/download/desktop"
+    },
+    {
+        "owner": "linux",
+        "product": "arch",
+        "address": "https://distrowatch.com/table.php?distribution=arch",
+        "selector": "body > table:nth-child(8) > tr:nth-child(1) > td:nth-child(3)",
+        "download": "https://archlinux.org/"
+    },
+    {
+        "owner": "linux",
+        "product": "centos",
+        "address": "https://distrowatch.com/table.php?distribution=centos",
+        "selector": "body > table:nth-child(8) > tr:nth-child(1) > td:nth-child(2)",
+        "download": "https://www.centos.org/download/"
+    },
+    {
+        "owner": "linux",
+        "product": "pop!_os",
+        "address": "https://distrowatch.com/table.php?distribution=popos",
+        "selector": "body > table:nth-child(8) > tr:nth-child(1) > td:nth-child(2)",
+        "download": "https://pop.system76.com/"
+    }
+]
