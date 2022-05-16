@@ -29,10 +29,10 @@ jobs:
 
 
       - run: | 
-          npm install
-          echo "FILE=$(node --no-warnings ./x-ray/${{ env.filename }})" >> $GITHUB_ENV
           echo "AIRTABLE_API_KEY=$(echo $AIRTABLE_API_KEY | cut -c 1-6)" >> $GITHUB_ENV
           echo $AIRTABLE_API_KEY
+          npm install
+          echo "FILE=$(node --no-warnings ./x-ray/${{ env.filename }})" >> $GITHUB_ENV
 
 
       - name: Commit changes
