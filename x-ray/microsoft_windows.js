@@ -39,6 +39,7 @@ xray(url, selector)(function(err, returned) {
 
 console.log(process.env.AIRTABLE_API_KEY);
 var api_key = process.env.AIRTABLE_API_KEY;
+console.log(api_key);
 // var base = new Airtable({apiKey: api_key}).base('app8NMPBTR6QCoYX2');
 
 var Airtable = require('airtable');
@@ -48,19 +49,27 @@ Airtable.configure({
 });
 var base = Airtable.base('app8NMPBTR6QCoYX2');
 
-
-base('versions').select({
-  maxRecords: 3,
-  view: "Grid view"
-}).eachPage(function page(records, fetchNextPage) {
-  // This function (`page`) will get called for each page of records.
-
-  records.forEach(function(record) {
-      console.log('Retrieved', record.get('title'));
+base('versions').create([
+  {
+    "fields": {
+      "title": "test1",
+      "version": "testing1",
+      "link": "https://test.com"
+    }
+  },
+  {
+    "fields": {
+      "title": "test2",
+      "version": "testing2",
+      "link": "https://test.com"
+    }
+  }
+], function(err, records) {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  records.forEach(function (record) {
+    console.log(record.getId());
   });
-
-  fetchNextPage();
-
-}, function done(err) {
-  if (err) { console.error(err); return; }
 });
