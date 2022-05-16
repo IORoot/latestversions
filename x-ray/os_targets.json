@@ -1,0 +1,50 @@
+[
+    {
+        "id"      : "os-microsoft-windows",
+        "title"   : "Microsoft Windows",
+        "url"     : "https://en.wikipedia.org/wiki/Microsoft_Windows",
+        "selector": "#mw-content-text > div.mw-parser-output > table.infobox.vevent > tbody > tr:nth-child(5) > td",
+        "regex"   : "\\s.*",
+        "download": "https://www.microsoft.com/en-gb/software-download"
+    },  
+    {
+        "id"      : "os-apple-macos",
+        "title"   : "Apple MacOS",
+        "url"     : "https://support.apple.com/en-us/HT201260",
+        "selector": "#tableWraper > table > tbody > tr:nth-child(2) > td:nth-child(2)",
+        "regex"   : "",
+        "download": "https://www.apple.com/uk/macos"
+    },  
+    {
+        "id"      : "os-linux-arch",
+        "title"   : "Arch Linux",
+        "url"     : "https://distrowatch.com/table.php?distribution=arch",
+        "selector": "body > table:nth-child(8) > tr:nth-child(1) > td:nth-child(3)",
+        "regex"   : "",
+        "download": "https://archlinux.org/"
+    },  
+    {
+        "id"      : "os-linux-centos",
+        "title"   : "CentOS",
+        "url"     : "https://distrowatch.com/table.php?distribution=centos",
+        "selector": "body > table:nth-child(8) > tr:nth-child(1) > td:nth-child(2)",
+        "regex"   : "",
+        "download": "https://www.centos.org/download/"
+    },  
+    {
+        "id"      : "os-linux-pop_os",
+        "title"   : "System76 Pop!_OS",
+        "url"     : "https://distrowatch.com/table.php?distribution=popos",
+        "selector": "body > table:nth-child(8) > tr:nth-child(1) > td:nth-child(2)",
+        "regex"   : "",
+        "download": "https://pop.system76.com/"
+    },  
+    {
+        "id"      : "os-linux-ubuntu",
+        "title"   : "Ubuntu",
+        "url"     : "https://distrowatch.com/table.php?distribution=ubuntu",
+        "selector": "body > table:nth-child(8) > tr:nth-child(1) > td:nth-child(3)",
+        "regex"   : "",
+        "download": "https://ubuntu.com/download/desktop"
+    }
+]

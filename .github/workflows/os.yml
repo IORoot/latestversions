@@ -1,4 +1,4 @@
-name: OS - WINDOWS
+name: Operating Systems
 on:
   workflow_dispatch:
   push:
@@ -6,15 +6,12 @@ on:
       - master
 
 env:
-  config: 'microsoft_windows.js'
+  config: 'os_targets.js'
 
 jobs:
-
   getRelease:
 
-
     runs-on: ubuntu-latest
-
 
     steps:
 
@@ -31,6 +28,6 @@ jobs:
         name: Run Scrape
         run: |
           echo 'AIRTABLE_API_KEY="${{ secrets.AIRTABLE_API_KEY }}"' >> .env
-          cat .env
+          cp ./x-ray/os_targets.json ./targets.json
           npm install
-          node --no-warnings ./x-ray/${{ env.config }}
+          node --no-warnings scrape.js
