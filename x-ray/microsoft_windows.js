@@ -10,6 +10,12 @@ var folders  = './results/os/microsoft'
 var filename = 'windows.json'
 
 
+var Airtable = require('airtable');
+Airtable.configure({
+    endpointUrl: 'https://api.airtable.com',
+    apiKey: process.env.AIRTABLE_API_KEY
+});
+var base = Airtable.base('app8NMPBTR6QCoYX2');
 
 
 
@@ -18,24 +24,12 @@ xray(url, selector)(function(err, returned) {
 
   var version = returned.replace(regex,'');
 
-  var Airtable = require('airtable');
-  Airtable.configure({
-      endpointUrl: 'https://api.airtable.com',
-      apiKey: process.env.AIRTABLE_API_KEY
-  });
+  // var json = {
+  //   "latest_version": version,
+  //   "html_url": download,
+  // };
 
-  var base = Airtable.base('app8NMPBTR6QCoYX2');
-
-  base('versions').create({
-    "title": "Microsoft Windows",
-    "version": version,
-    "link": download
-  }, function(err, record) {
-    if (err) {
-      console.error(err);
-      return;
-    }
-  });
+  
 
   // var data = JSON.stringify(json);
 
@@ -51,5 +45,16 @@ xray(url, selector)(function(err, returned) {
     
   // });
 
+});
+
+base('versions').create({
+  "title": "Windows",
+  "version": version,
+  "link": download
+}, function(err, record) {
+  if (err) {
+    console.error(err);
+    return;
+  }
 });
 
