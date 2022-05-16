@@ -1,6 +1,7 @@
-const fs   = require('fs');
-const Xray = require('x-ray')
-const xray = Xray()
+const fs     = require('fs');
+const Xray   = require('x-ray')
+const xray   = Xray()
+const Client = require('pg');
 
 var url      = 'https://en.wikipedia.org/wiki/Microsoft_Windows';
 var selector = '#mw-content-text > div.mw-parser-output > table.infobox.vevent > tbody > tr:nth-child(5) > td'
@@ -35,4 +36,22 @@ xray(url, selector)(function(err, returned) {
     
   });
 
+});
+
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
 });
