@@ -2,7 +2,7 @@ const fs     = require('fs');
 const Xray   = require('x-ray')
 const xray   = Xray()
 var faunadb  = require('faunadb')
-var query    = faunadb.query
+var q    = faunadb.query
 
 var url      = 'https://en.wikipedia.org/wiki/Microsoft_Windows';
 var selector = '#mw-content-text > div.mw-parser-output > table.infobox.vevent > tbody > tr:nth-child(5) > td'
