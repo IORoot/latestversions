@@ -1,4 +1,4 @@
-name: OS
+name: OS - WINDOWS
 on:
   workflow_dispatch:
   # push:

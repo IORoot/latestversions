@@ -11,5 +11,10 @@ Includes:
 
 # Methods of extraction
 
-1. Github Action of release number of github repository
-1. Web scrape using node.js library x-ray
+## Github Action 
+Uses github actions to get the release number of a github repository
+
+## X-Ray 
+Web scrape using node.js library x-ray
+- https://github.com/matthewmueller/x-ray
+- https://www.npmjs.com/package/x-ray

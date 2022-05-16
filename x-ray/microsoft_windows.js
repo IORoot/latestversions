@@ -2,11 +2,12 @@ const fs   = require('fs');
 const Xray = require('x-ray')
 const xray = Xray()
 
-var url = 'https://en.wikipedia.org/wiki/List_of_Microsoft_Windows_versions';
-var selector = '#mw-content-text > div.mw-parser-output > table:nth-child(7) > tbody > tr:last-child > td:nth-child(1)'
+var url = 'https://en.wikipedia.org/wiki/Microsoft_Windows';
+var selector = '#mw-content-text > div.mw-parser-output > table.infobox.vevent > tbody > tr:nth-child(5) > td'
 var download = 'https://www.microsoft.com/en-gb/software-download';
 var folders = './results/os/microsoft'
 var filename = 'windows.json'
+
 
 xray(url, selector)(function(err, returned) {
 
