@@ -1,8 +1,7 @@
 const fs     = require('fs');
 const Xray   = require('x-ray')
 const xray   = Xray()
-var faunadb  = require('faunadb')
-var q    = faunadb.query
+var Airtable = require('airtable');
 
 var url      = 'https://en.wikipedia.org/wiki/Microsoft_Windows';
 var selector = '#mw-content-text > div.mw-parser-output > table.infobox.vevent > tbody > tr:nth-child(5) > td'
@@ -40,25 +39,12 @@ xray(url, selector)(function(err, returned) {
 });
 
 
-
-var client = new faunadb.Client({
-  secret: process.env.FAUNADB,
-  domain: 'graphql.fauna.com/graphql',
-  // NOTE: Use the correct domain for your database's Region Group.
-  port: 443,
-  scheme: 'https',
-})
-
-var createP = client.query(
-  q.Create(
-    q.Collection('versions'),
-    { data: {
-      "latest_version": "2011.08.19",
-      "html_url": "https://test.com/"
-    } }
-  )
-)
-
-createP.then(function(response) {
-  console.log(response.ref); // Logs the ref to the console.
-})
+var base     = new Airtable({apiKey: process.env.AIRTABLE_API_KEY}).base('app8NMPBTR6QCoYX2');
+base('versions').select({
+  view: 'Grid view'
+}).firstPage(function(err, records) {
+  if (err) { console.error(err); return; }
+  records.forEach(function(record) {
+      console.log('Retrieved', record.get('title'));
+  });
+});
