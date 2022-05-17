@@ -41,8 +41,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
-      - run: | 
+      - name: Repo data into data.json
+        run: | 
           echo '${{ steps.get_latest_release.outputs.data }}' | tr '\r\n' ' ' > ./data.json
           cat ./data.json
 
