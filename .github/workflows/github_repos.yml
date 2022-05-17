@@ -8,7 +8,7 @@ env:
 
 jobs:
 
-  getRelease:
+  get:
 
     strategy:
       fail-fast: false
@@ -38,15 +38,16 @@ jobs:
 
 
       - run: | 
-          echo '${{ steps.get_latest_release.outputs.data }}' | tr '\r\n' ' ' > ./${{ matrix.repo }}.json
-          cat ./${{ matrix.repo }}.json
+          FILENAME=`echo ${{ matrix.repo }} | sed 's/.*\///g'`
+          echo '${{ steps.get_latest_release.outputs.data }}' | tr '\r\n' ' ' > ./$FILENAME.json
+          cat ./$FILENAME.json
 
 
       - name: Get Release tag_name
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./${{ matrix.repo }}.json -r > ./results.json"
+          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./$FILENAME.json -r > ./results.json"
 
 
       - run: | 
