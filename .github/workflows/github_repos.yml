@@ -62,7 +62,7 @@ jobs:
 
 
       - name: Push to Airtable
-      - run: | 
+        run: | 
           cat ./results.json
           cat ./results.json | curl -v \
             -X POST \
