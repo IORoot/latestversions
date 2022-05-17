@@ -1,0 +1,19 @@
+name: All Workflows
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  runAll:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Operating Systems
+        uses: ./.github/workflows/os.yml
+
+      - name: IDEs
+        uses: ./.github/workflows/ide.yml

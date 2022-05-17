@@ -1,9 +1,6 @@
 name: IDEs
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - master
 
 env:
   category: ide

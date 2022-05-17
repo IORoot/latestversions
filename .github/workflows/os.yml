@@ -1,9 +1,6 @@
 name: Operating Systems
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
 
 env:
   config: 'os_targets.js'
