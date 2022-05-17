@@ -46,5 +46,13 @@
         "selector": "body > table:nth-child(8) > tr:nth-child(1) > td:nth-child(3)",
         "regex"   : "",
         "download": "https://ubuntu.com/download/desktop"
-    }
+    },
+    {
+        "id"      : "ide-github-atom",
+        "title"   : "Github Atom",
+        "url"     : "https://atom.io/",
+        "selector": "#js-pjax-container > div > section.section.section--hero > div > header > ul > li:nth-child(2) > span",
+        "regex"   : "",
+        "download": "https://atom.io/"
+    },
 ]

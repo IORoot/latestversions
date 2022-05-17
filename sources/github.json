@@ -12,12 +12,6 @@
         "download": "https://notepad-plus-plus.org/"
     },
     {
-        "repo"    : "atom/atom",
-        "id"      : "ide-github-atom",
-        "title"   : "Github Atom",
-        "download": "https://atom.io/"
-    },
-    {
         "repo"    : "textmate/textmate",
         "id"      : "ide-macromates-textmate",
         "title"   : "MacroMates TextMate",

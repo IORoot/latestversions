@@ -19,7 +19,6 @@ jobs:
         repo : [
           'microsoft/vscode',
           'notepad-plus-plus/notepad-plus-plus',
-          'atom/atom',
           'textmate/textmate'
         ]
       
