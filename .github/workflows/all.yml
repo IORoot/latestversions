@@ -12,5 +12,5 @@ jobs:
     secrets:
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
 
-  Github-Repos:
+  Github:
     uses: ./.github/workflows/github_repos.yml

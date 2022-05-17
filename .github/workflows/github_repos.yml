@@ -38,7 +38,6 @@ jobs:
 
 
       - run: | 
-          mkdir -p results/${{ env.category }}/${{ matrix.repo }}
           echo '${{ steps.get_latest_release.outputs.data }}' | tr '\r\n' ' ' > ./${{ matrix.repo }}.json
           cat ./${{ matrix.repo }}.json
 
@@ -53,7 +52,7 @@ jobs:
       - run: | 
           cat ./results.json
 
-          
+
       # - name: Commit changes
       #   uses: EndBug/add-and-commit@v7
       #   with:
