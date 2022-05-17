@@ -13,12 +13,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        repo: [
-          'microsoft/vscode', 
-          'notepad-plus-plus/notepad-plus-plus',
-          'atom/atom',
-          'textmate/textmate',
-        ]
+        include:
+          - repo: 'microsoft/vscode'
+          - repo: 'notepad-plus-plus/notepad-plus-plus'
+          #   file: 'ide-notepad++.json'
+          # - repo: 'atom/atom'
+          #   file: 'ide-atom.json'
+          # - repo: 'textmate/textmate'
+          #   file: 'ide-textmate.json'
 
     runs-on: ubuntu-latest
 
@@ -42,11 +44,18 @@ jobs:
           cat ./data.json
 
 
+      - name: Get the repo details
+        uses: sergeysova/jq-action@v2
+        id: get_repo_details
+        with:
+          cmd: "jq '.[] | select( .repo | contains(\"${{ matrix.repo }}\") )' ./sources/github.json  -r > ./source.json"
+
+
       - name: Get Release tag_name
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./data.json -r > ./results.json"
+          cmd: "jq '{id: .[1].id, title: .[1].title, version: .[0].tag_name, link: .[1].download, published_at: .[0].published_at}' -s ./data.json ./source.json  -r > ./results.json"
 
 
       - run: | 
@@ -58,3 +67,11 @@ jobs:
       #   with:
       #     message: 'Update'
       #     add: './results/${{ env.category }}/${{ matrix.repo }}.json'
+
+
+
+      # "id"     : target.id,
+      # "title"  : target.title,
+      # "version": version,
+      # "link"   : target.download,
+      # "date"   : date.toGMTString()

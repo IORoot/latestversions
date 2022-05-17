@@ -1,0 +1,14 @@
+[
+    {
+        "repo"    : "microsoft/vscode",
+        "id"      : "ide-microsoft-vscode",
+        "title"   : "Microsoft VSCode",
+        "download": "https://code.visualstudio.com/"
+    },
+    {
+        "repo"    : "notepad-plus-plus/notepad-plus-plus",
+        "id"      : "ide-notepad++",
+        "title"   : "Notepad++",
+        "download": "https://notepad-plus-plus.org/"
+    }
+]
