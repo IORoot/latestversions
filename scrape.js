@@ -23,12 +23,10 @@ targets.forEach(target => {
       "date"   : date.toGMTString()
     }
 
-    console.log(json);
-
-    /* Add data onto results array */
-    results.push(json);
   })
 
+  /* Add data onto results array */
+  results.push(json);
 })
 
 console.log(results);
