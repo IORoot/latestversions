@@ -2,7 +2,7 @@ require('dotenv').config();
 const fs = require('fs');
 const base = require('airtable').base('app8NMPBTR6QCoYX2');
 
-let rawdata = fs.readFileSync('results.json');
+let rawdata = fs.readFileSync('./results.json');
 const targets = JSON.parse(rawdata);
 
 results.forEach(result => {

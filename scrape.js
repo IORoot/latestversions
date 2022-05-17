@@ -5,6 +5,8 @@ const xray   = Xray()
 let rawdata = fs.readFileSync('targets.json');
 const targets = JSON.parse(rawdata);
 
+var results = [];
+
 targets.forEach(target => {
 
   xray(target.url, target.selector)(function(err, returned) {
@@ -24,11 +26,15 @@ targets.forEach(target => {
     /* JSON Encode data */
     const data = JSON.stringify(json);
 
-    /* Write File */
-    fs.writeFile('./results.json', data, (err) => {
-      if (err) { throw err; }
-    });
-
+    /* Add data onto results array */
+    results.push(data);
   })
+
+  console.log(results);
+  
+  /* Write File */
+  fs.writeFile('./results.json', results, (err) => {
+    if (err) { throw err; }
+  });
 
 })
