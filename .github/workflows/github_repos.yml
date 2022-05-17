@@ -56,7 +56,7 @@ jobs:
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: "jq '{\"records\": [{ \"fields\": {id: .[1].id, title: .[1].title, version: .[0].tag_name, link: .[1].download, date: .[0].published_at}}]}' -s ./data.json ./source.json  -r > ./results.json"
+          cmd: "jq '{\"records\": [{ \"fields\": {id: .[1].id, title: .[1].title, version: .[0].tag_name, link: .[1].download, date: (now| todateiso8601) }}]}' -s ./data.json ./source.json  -r > ./results.json"
 
 
       - name: Push to Airtable
