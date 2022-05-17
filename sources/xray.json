@@ -54,5 +54,5 @@
         "selector": "#js-pjax-container > div > section.section.section--hero > div > header > ul > li:nth-child(2) > span",
         "regex"   : "",
         "download": "https://atom.io/"
-    },
+    }
 ]
