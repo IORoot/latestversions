@@ -12,5 +12,5 @@ jobs:
     secrets:
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
 
-  call-ides:
-    uses: ./.github/workflows/ide.yml
+  # call-ides:
+  #   uses: ./.github/workflows/ide.yml

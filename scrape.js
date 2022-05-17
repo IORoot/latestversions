@@ -23,17 +23,17 @@ targets.forEach(target => {
       "date"   : date.toGMTString()
     }
 
-    /* JSON Encode data */
-    const data = JSON.stringify(json);
-
     /* Add data onto results array */
-    results.push(data);
+    results.push(json);
   })
 
   console.log(results);
-  
+
+  /* JSON Encode data */
+  const data = JSON.stringify(results);
+
   /* Write File */
-  fs.writeFile('./results.json', results, (err) => {
+  fs.writeFile('./results.json', data, (err) => {
     if (err) { throw err; }
   });
 
