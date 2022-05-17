@@ -9,13 +9,15 @@ var results = [];
 
 targets.forEach(target => {
 
+  var json;
+
   xray(target.url, target.selector)(function(err, returned) {
 
     var regex = new RegExp(target.regex);
     var version = returned.replace(regex,'');
     const date = new Date()
 
-    var json = {
+    json = {
       "id"     : target.id,
       "title"  : target.title,
       "version": version,
