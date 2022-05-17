@@ -1,4 +1,4 @@
-name: Operating Systems
+name: X-Ray Targets
 on:
   workflow_dispatch:
   workflow_call:
@@ -25,13 +25,7 @@ jobs:
       - shell: bash
         name: Run Scrape
         run: |
-          cp ./x-ray/os_targets.json ./targets.json
+          echo 'AIRTABLE_API_KEY="${{ secrets.AIRTABLE_API_KEY }}"' >> .env
+          cp ./source_x-ray/targets.json ./targets.json
           npm install
           node --no-warnings scrape.js
-          cat ./results.json
-
-      - shell: bash
-        name: Send to Airtable
-        run: |
-          echo 'AIRTABLE_API_KEY="${{ secrets.AIRTABLE_API_KEY }}"' >> .env
-          node --no-warnings export_airtable.js

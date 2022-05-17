@@ -8,7 +8,7 @@ on:
 jobs:
 
   call-operating-systems:
-    uses: ./.github/workflows/os.yml
+    uses: ./.github/workflows/xray_targets.yml
     secrets:
       AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
 

@@ -1,4 +1,4 @@
-name: IDEs
+name: Github Repos
 on:
   workflow_dispatch:
   workflow_call:
@@ -18,7 +18,7 @@ jobs:
           'notepad-plus-plus/notepad-plus-plus',
           'atom/atom',
           'textmate/textmate',
-          ]
+        ]
 
     runs-on: ubuntu-latest
 
@@ -39,20 +39,23 @@ jobs:
 
       - run: | 
           mkdir -p results/${{ env.category }}/${{ matrix.repo }}
-          echo '${{ steps.get_latest_release.outputs.data }}' | tr '\r\n' ' ' > ./results/${{ env.category }}/${{ matrix.repo }}.release.json
-          cat ./results/${{ env.category }}/${{ matrix.repo }}.release.json
+          echo '${{ steps.get_latest_release.outputs.data }}' | tr '\r\n' ' ' > ./${{ matrix.repo }}.json
+          cat ./${{ matrix.repo }}.json
 
 
       - name: Get Release tag_name
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./results/${{ env.category }}/${{ matrix.repo }}.release.json -r > ./results/${{ env.category }}/${{ matrix.repo }}.json"
+          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./${{ matrix.repo }}.json -r > ./results.json"
 
 
+      - run: | 
+          cat ./results.json
 
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v7
-        with:
-          message: 'Update'
-          add: './results/${{ env.category }}/${{ matrix.repo }}.json'
+          
+      # - name: Commit changes
+      #   uses: EndBug/add-and-commit@v7
+      #   with:
+      #     message: 'Update'
+      #     add: './results/${{ env.category }}/${{ matrix.repo }}.json'

@@ -1,15 +1,13 @@
+require('dotenv').config();
 const fs = require('fs');
 const Xray   = require('x-ray')
 const xray   = Xray()
+const base = require('airtable').base('app8NMPBTR6QCoYX2');
 
 let rawdata = fs.readFileSync('targets.json');
 const targets = JSON.parse(rawdata);
 
-var results = [];
-
 targets.forEach(target => {
-
-  var json;
 
   xray(target.url, target.selector)(function(err, returned) {
 
@@ -17,26 +15,16 @@ targets.forEach(target => {
     var version = returned.replace(regex,'');
     const date = new Date()
 
-    json = {
+    base('versions').create({
       "id"     : target.id,
       "title"  : target.title,
       "version": version,
       "link"   : target.download,
       "date"   : date.toGMTString()
-    }
+    }, function(err, record) {
+      if (err) {  console.error(err); return; }
+    });
 
   })
 
-  /* Add data onto results array */
-  results.push(json);
 })
-
-console.log(results);
-
-/* JSON Encode data */
-const data = JSON.stringify(results);
-
-/* Write File */
-fs.writeFile('./results.json', data, (err) => {
-  if (err) { throw err; }
-});
