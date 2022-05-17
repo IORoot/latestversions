@@ -9,6 +9,8 @@ jobs:
 
   call-operating-systems:
     uses: ./.github/workflows/os.yml
+    secrets:
+      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
 
   call-ides:
     uses: ./.github/workflows/ide.yml

@@ -2,9 +2,9 @@ name: Operating Systems
 on:
   workflow_dispatch:
   workflow_call:
-  
-env:
-  config: 'os_targets.js'
+    secrets:
+      AIRTABLE_API_KEY:
+        required: true
 
 jobs:
   getRelease:
