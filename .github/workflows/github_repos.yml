@@ -64,9 +64,4 @@ jobs:
       - name: Push to Airtable
         run: | 
           cat ./results.json
-          cat ./results.json | curl -v \
-            -X POST \
-            -H "Content-Type: application/json" \ 
-            -H "Authorization: Bearer ${{ secrets.AIRTABLE_API_KEY }}" \
-            -X POST \
-            --data @- https://api.airtable.com/v0/app8NMPBTR6QCoYX2/versions
+          curl -v -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.AIRTABLE_API_KEY }}" -X POST -d @./results.json https://api.airtable.com/v0/app8NMPBTR6QCoYX2/versions
