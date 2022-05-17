@@ -32,5 +32,6 @@ jobs:
       - shell: bash
         name: Send to Airtable
         run: |
+          cat ./results.json
           echo 'AIRTABLE_API_KEY="${{ secrets.AIRTABLE_API_KEY }}"' >> .env
           node --no-warnings export_airtable.js

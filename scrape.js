@@ -27,7 +27,6 @@ targets.forEach(target => {
     /* Write File */
     fs.writeFile('./results.json', data, (err) => {
       if (err) { throw err; }
-      console.log('./results.json');
     });
 
   })
