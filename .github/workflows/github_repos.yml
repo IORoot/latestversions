@@ -47,7 +47,7 @@ jobs:
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          cmd: "jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./$FILENAME.json -r > ./results.json"
+          cmd: "FILENAME=`echo ${{ matrix.repo }} | sed 's/.*\///g'`; jq '{latest_version: .tag_name, html_url: .html_url, published_at: .published_at}' ./$FILENAME.json -r > ./results.json"
 
 
       - run: | 
