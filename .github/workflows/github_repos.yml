@@ -2,6 +2,9 @@ name: Github Repos
 on:
   workflow_dispatch:
   workflow_call:
+    secrets:
+      AIRTABLE_API_KEY:
+        required: true
   
 env:
   category: ide
@@ -58,20 +61,12 @@ jobs:
           cmd: "jq '{id: .[1].id, title: .[1].title, version: .[0].tag_name, link: .[1].download, published_at: .[0].published_at}' -s ./data.json ./source.json  -r > ./results.json"
 
 
+      - name: Push to Airtable
       - run: | 
           cat ./results.json
-
-
-      # - name: Commit changes
-      #   uses: EndBug/add-and-commit@v7
-      #   with:
-      #     message: 'Update'
-      #     add: './results/${{ env.category }}/${{ matrix.repo }}.json'
-
-
-
-      # "id"     : target.id,
-      # "title"  : target.title,
-      # "version": version,
-      # "link"   : target.download,
-      # "date"   : date.toGMTString()
+          cat ./results.json | curl -v \
+            -X POST \
+            -H "Content-Type: application/json" \ 
+            -H "Authorization: Bearer ${{ secrets.AIRTABLE_API_KEY }}" \
+            -X POST \
+            --data @- https://api.airtable.com/v0/app8NMPBTR6QCoYX2/versions
