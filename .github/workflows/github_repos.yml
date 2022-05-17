@@ -16,14 +16,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - repo: 'microsoft/vscode'
-          - repo: 'notepad-plus-plus/notepad-plus-plus'
-          #   file: 'ide-notepad++.json'
-          # - repo: 'atom/atom'
-          #   file: 'ide-atom.json'
-          # - repo: 'textmate/textmate'
-          #   file: 'ide-textmate.json'
+        repo : [
+          'microsoft/vscode',
+          'notepad-plus-plus/notepad-plus-plus',
+          'atom/atom',
+          'textmate/textmate'
+        ]
+      
 
     runs-on: ubuntu-latest
 
