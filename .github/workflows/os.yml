@@ -1,7 +1,8 @@
 name: Operating Systems
 on:
   workflow_dispatch:
-
+  workflow_call:
+  
 env:
   config: 'os_targets.js'
 
