@@ -7,8 +7,20 @@
     },
     {
         "repo"    : "notepad-plus-plus/notepad-plus-plus",
-        "id"      : "ide-notepad++",
+        "id"      : "ide-notepad++-notepad++",
         "title"   : "Notepad++",
         "download": "https://notepad-plus-plus.org/"
+    },
+    {
+        "repo"    : "atom/atom",
+        "id"      : "ide-github-atom",
+        "title"   : "Github Atom",
+        "download": "https://atom.io/"
+    },
+    {
+        "repo"    : "textmate/textmate",
+        "id"      : "ide-macromates-textmate",
+        "title"   : "MacroMates TextMate",
+        "download": "https://macromates.com/"
     }
 ]
