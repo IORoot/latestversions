@@ -29,7 +29,7 @@ jobs:
           echo 'FAUNADB_API_KEY="${{ secrets.FAUNADB_API_KEY }}"' >> .env
           cp ./sources/xray.json ./targets.json
           npm install
-          node --no-warnings scrape-json.js
+          node --no-warnings scrape.js
 
       
       - name: Install FaunaDB
