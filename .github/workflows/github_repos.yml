@@ -66,10 +66,12 @@ jobs:
       #     cat ./results.json
       #     curl -v -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.AIRTABLE_API_KEY }}" -X POST -d @./results.json https://api.airtable.com/v0/app8NMPBTR6QCoYX2/versions
 
-      - name: Push to FaunaDB
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 14
+      
+      - name: Push to FaunaDB
         run: |
           npm i -g fauna-shell
           fauna import --secret=${{ secrets.FAUNADB_API_KEY }} --collection=versions --path ./results.json
