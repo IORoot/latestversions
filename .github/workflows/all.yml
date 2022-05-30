@@ -7,12 +7,18 @@ on:
 
 jobs:
 
+  FaunaDB:
+    uses: ./.github/workflows/faunadb.yml
+    secrets:
+      FAUNADB_API_KEY: ${{ secrets.FAUNADB_API_KEY }}
+
   # X-Ray:
   #   uses: ./.github/workflows/xray_targets.yml
   #   secrets:
   #     AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
 
   Github:
+    needs: FaunaDB
     uses: ./.github/workflows/github_repos.yml
     secrets:
       # AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}

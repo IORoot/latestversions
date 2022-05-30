@@ -75,10 +75,6 @@ jobs:
         run: |
           npm i -g fauna-shell
 
-      - name: Clear Collection
-        run: |
-          echo "Map( Paginate( Documents(Collection('versions')), { size: 9999 } ), Lambda( ['ref'], Delete(Var('ref'))))" | fauna eval --stdin --secret=${{ secrets.FAUNADB_API_KEY }}
-
       - name: Import Data
         run: |         
           fauna import --append --secret=${{ secrets.FAUNADB_API_KEY }} --collection=versions --path ./results.json
