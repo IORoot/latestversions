@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
-      AIRTABLE_API_KEY:
+      FAUNADB_API_KEY:
         required: true
 
 jobs:
@@ -26,7 +26,17 @@ jobs:
       - shell: bash
         name: Run Scrape
         run: |
-          echo 'AIRTABLE_API_KEY="${{ secrets.AIRTABLE_API_KEY }}"' >> .env
+          echo 'FAUNADB_API_KEY="${{ secrets.FAUNADB_API_KEY }}"' >> .env
           cp ./sources/xray.json ./targets.json
           npm install
-          node --no-warnings scrape.js
+          node --no-warnings scrape-json.js
+
+      
+      - name: Install FaunaDB
+        run: |
+          npm i -g fauna-shell
+
+
+      - name: Import Data
+        run: |         
+          fauna import --append --secret=${{ secrets.FAUNADB_API_KEY }} --collection=versions --path ./results.json

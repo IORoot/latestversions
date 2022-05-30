@@ -3,8 +3,6 @@ on:
   workflow_dispatch:
   workflow_call:
     secrets:
-      # AIRTABLE_API_KEY:
-      #   required: true
       FAUNADB_API_KEY:
         required: true
   
@@ -60,11 +58,6 @@ jobs:
         with:
           cmd: "jq '{\"records\": [{ \"fields\": {id: .[1].id, title: .[1].title, version: .[0].tag_name, link: .[1].download, date: (now| todateiso8601) }}]}' -s ./data.json ./source.json  -r > ./results.json"
 
-
-      # - name: Push to Airtable
-      #   run: | 
-      #     cat ./results.json
-      #     curl -v -X POST -H "Content-Type: application/json" -H "Authorization: Bearer ${{ secrets.AIRTABLE_API_KEY }}" -X POST -d @./results.json https://api.airtable.com/v0/app8NMPBTR6QCoYX2/versions
 
       - name: Setup Node
         uses: actions/setup-node@v3
