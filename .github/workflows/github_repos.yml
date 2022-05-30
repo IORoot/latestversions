@@ -56,7 +56,6 @@ jobs:
         uses: sergeysova/jq-action@v2
         id: release_tag_name
         with:
-          # cmd: "jq '{\"records\": [{ \"fields\": {id: .[1].id, title: .[1].title, version: .[0].tag_name, link: .[1].download, date: (now| todateiso8601) }}]}' -s ./data.json ./source.json  -r > ./results.json"
           cmd: "jq '{category: .[1].category, company: .[1].company, title: .[1].title, version: .[0].tag_name, link: .[1].download, date: (now| todateiso8601), logo_url: .[1].logo_url, colour1: .[1].colour1, colour2: .[1].colour2, }' -s ./data.json ./source.json  -r > ./results.json"
 
 
