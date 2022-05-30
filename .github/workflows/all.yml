@@ -16,11 +16,11 @@ jobs:
     needs: FaunaDB
     uses: ./.github/workflows/github_repos.yml
     secrets:
-      # AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
       FAUNADB_API_KEY: ${{ secrets.FAUNADB_API_KEY }}
 
 
   X-Ray:
+    needs: FaunaDB
     uses: ./.github/workflows/xray_targets.yml
     secrets:
-      AIRTABLE_API_KEY: ${{ secrets.AIRTABLE_API_KEY }}
+      FAUNADB_API_KEY: ${{ secrets.FAUNADB_API_KEY }}
