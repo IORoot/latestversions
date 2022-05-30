@@ -74,5 +74,5 @@ jobs:
       - name: Push to FaunaDB
         run: |
           npm i -g fauna-shell
-          fauna import --secret=${{ secrets.FAUNADB_API_KEY }} --collection=versions --path ./results.json
+          fauna import --append --secret=${{ secrets.FAUNADB_API_KEY }} --collection=versions --path ./results.json
 
