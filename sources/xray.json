@@ -9,7 +9,7 @@
         "category": "Operating Systems",
         "company":  "Microsoft",
         "colour1":  "#00A4EF ",
-        "colour2":  "#F25022",
+        "colour2":  "#ffffff",
         "logo_url": "%3Csvg role='img' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ctitle%3EWindows%3C/title%3E%3Cpath d='M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801'/%3E%3C/svg%3E"
     },  
     {
