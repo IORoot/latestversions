@@ -1,5 +1,5 @@
 
-# Latest Versions
+# Latest Versions Scraper
 
 Github actions that generate small JSON files with the latest version number of that piece of software in it.
 Includes:
