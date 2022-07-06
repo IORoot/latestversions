@@ -48,7 +48,10 @@ These then populate the FaunaDB.
 
 ###  2.1. <a name='BuiltWith'></a>Built With
 
-* [Wordpress](https://wordpress.org/)
+* [FaunaDB](https://fauna.com/)
+* [Gatsby](https://www.gatsbyjs.com/)
+* [Netlify](https://www.netlify.com/)
+* [Github Actions](https://github.com/features/actions)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
